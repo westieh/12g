@@ -159,16 +159,13 @@ type Board () =
                                      let opponent = List.choose snd vacantPieceLists
                                                                                         
                                      (vacant, opponent)
-                        for h = 0 to vacant1.Length - 1 do 
-                            if List.contains (vacant1.Item h) (fst availableMoves1) = true then
-                                for i = 0 to (fst availableMoves1).Length - 1 do
-                                    if List.contains ((fst availableMoves1).Item i) vacant1 = true then
-                                        
-                                        vacant1 <- List.filter (fun x -> x <> ((fst availableMoves1).Item i)) vacant1
-                                        
-                                        printfn " This is vacant1: %A" vacant1
-                                    else
-                                        vacant1 <- vacant1
+                        for i = 0 to (fst availableMoves1).Length - 1 do
+                            if List.contains ((fst availableMoves1).Item i) vacant1 = true then
+                                
+                                vacant1 <- List.filter (fun x -> x <> ((fst availableMoves1).Item i)) vacant1
+                                
+                            else
+                                vacant1 <- vacant1
                         for i = 0 to (snd availableMoves1).Length - 1 do
                             if List.contains ((snd availableMoves1).Item i) opponent1 = true then
                                 opponent1 <- List.filter (fun x -> x <> ((snd availableMoves1).Item i)) opponent1
